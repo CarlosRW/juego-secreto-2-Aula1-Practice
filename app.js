@@ -1,6 +1,6 @@
 // Código de la aplicación
-let numeroSecreto = generarNumeroSecreto();
-let intentos = 1;
+let numeroSecreto = 0;
+let intentos = 0;
 console.log(numeroSecreto);
 
 function asignarTextoElemento(elemento, texto) {
@@ -36,5 +36,23 @@ function generarNumeroSecreto() {
     return Math.floor(Math.random() * 10) + 1;
 }
 
-asignarTextoElemento('h1', 'Juego del número secreto');
-asignarTextoElemento('p', 'Adivina el número secreto que está entre 1 y 10');
+function condicionesIniciales() {
+    asignarTextoElemento('h1', 'Juego del número secreto');
+    asignarTextoElemento('p', 'Adivina el número secreto que está entre 1 y 10');
+    numeroSecreto = generarNumeroSecreto();
+    intentos = 1;
+
+}
+
+function reiniciarJuego() {
+    // Limpiar el campo de texto
+    limpiar();
+    // Llamar a condiciones iniciales
+    condicionesIniciales();
+    // Deshabilitar el botón de reiniciar
+    document.querySelector('#reiniciar').setAttribute('disabled', 'true');
+}
+
+condicionesIniciales();
+
+
